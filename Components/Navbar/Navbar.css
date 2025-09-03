@@ -1,6 +1,10 @@
 /* Add body margin to prevent overlap with fixed navbar */
 body {
   margin-top: 100px;
+  font-family: 'Arial', sans-serif;
+  background: #000;
+  color: #fff;
+  overflow-x: hidden;
 }
 
 .floating-navbar {
