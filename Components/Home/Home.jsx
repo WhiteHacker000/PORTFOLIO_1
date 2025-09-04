@@ -340,13 +340,12 @@ const Home = () => {
               <div className="about-box with-photo">
                 <h2 className="about-title">About Myself</h2>
                 <p className="about-text">
-                  I am a passionate developer with a love for futuristic UI and cyberpunk design. 
-                  Welcome to my portfolio where creativity meets technology.
+                  I am Kushal Tyagi, a passionate developer with a love for futuristic UI and cyberpunk design. Welcome to my portfolio where creativity meets technology.
                 </p>
                 <div className="about-details">
                   <div className="detail-item">
                     <span className="detail-label">Skills:</span>
-                    <span className="detail-value">React, JavaScript, CSS3, HTML5</span>
+                    <span className="detail-value">React, JavaScript, CSS3, HTML5, Python, Windows, MySQL</span>
                   </div>
                   <div className="detail-item">
                     <span className="detail-label">Focus:</span>
@@ -363,7 +362,7 @@ const Home = () => {
 
           {/* Projects Section */}
           <section className="projects-section">
-            <h1 className="projects-title">Projects</h1>
+            <h1 className="projects-title">PROJECTS</h1>
             <div className="projects-grid">
               <a className="project-card" href="#" target="_blank" rel="noreferrer">
                 <div className="project-image" aria-label="Project 1 image"></div>

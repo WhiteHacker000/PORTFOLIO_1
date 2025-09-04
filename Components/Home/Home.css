@@ -153,7 +153,7 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
   align-items: start;
-  padding: 96px 4rem 24px; /* space under navbar */
+  padding: 160px 4rem 24px; /* doubled gap under navbar */
 }
 
 .tagline-section {
@@ -162,6 +162,9 @@ body {
   left: auto;
   right: auto;
   max-width: none;
+  align-self: center; /* vertically center vs About card */
+  justify-self: start;
+  margin-left: -12px; /* slight left shift */
 }
 
 .about-myself-section {
@@ -176,13 +179,17 @@ body {
 @media (max-width: 1024px) {
   .hero-stack {
     grid-template-columns: 1fr;
-    padding: 88px 2rem 24px;
+    padding: 144px 2rem 24px;
+  }
+  .tagline-section {
+    align-self: auto; /* reset when stacked */
+    margin-left: 0;
   }
 }
 
 @media (max-width: 480px) {
   .hero-stack {
-    padding: 80px 1rem 16px;
+    padding: 128px 1rem 16px;
   }
 }
 
@@ -501,13 +508,56 @@ body {
 }
 
 .projects-title {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: "Gill Sans", sans-serif;
   font-size: 2.5rem;
   font-weight: 800;
   color: #ffffff;
   text-align: center;
   margin: 0 0 32px 0;
-  text-shadow: 0 0 25px rgba(0, 246, 255, 0.6);
+  display: inline-block;
+  padding: 14px 34px;
+  border-radius: 18px;
+  background: #0b0b0b; /* opaque base to feel embedded */
+  position: relative;
+  width: fit-content;
+  /* recessed look */
+  box-shadow:
+    inset 0 10px 22px rgba(255, 255, 255, 0.03),
+    inset 0 -12px 28px rgba(0, 0, 0, 0.6),
+    0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* animated red/blue edge, kept subtle */
+.projects-title::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px; /* border thickness */
+  border-radius: 18px;
+  background: linear-gradient(120deg, #ff1744, #00f6ff, #ff1744);
+  background-size: 200% 200%;
+  animation: projectsBorderFlow 3.8s linear infinite;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 10px rgba(0, 246, 255, 0.35)) drop-shadow(0 0 10px rgba(255, 23, 68, 0.25));
+}
+
+/* inner bevel highlight to sell the embedded effect */
+.projects-title::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 16px;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.0) 35%, rgba(0,0,0,0.25));
+}
+
+@keyframes projectsBorderFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .projects-grid {
@@ -562,6 +612,11 @@ body {
   font-size: 0.95rem;
 }
 
+.project-name,
+.project-link {
+  font-family: "Gill Sans", sans-serif;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .projects-grid {
@@ -585,8 +640,10 @@ body {
 }
 
 .hex-sticky {
-  position: sticky;
+  position: fixed;
   top: 0; /* sticks under navbar */
+  left: 0;
+  width: 100vw;
   height: 100vh;
   pointer-events: none;
   z-index: 1; /* under content */
@@ -595,7 +652,6 @@ body {
 .hex-content {
   position: relative;
   z-index: 2; /* above hexes */
-  min-height: 100vh; /* reserve space for absolute hero blocks */
 }
 
 .about-photo {
