@@ -1,0 +1,9 @@
+.contact-container {
+  margin-left: 24px; /* subtle shift to the right */
+}
+
+@media (min-width: 768px) {
+  .contact-container {
+    margin-left: 48px; /* a bit more on larger screens */
+  }
+}

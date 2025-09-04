@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './Home.css';
+import HeroPhoto from '../../Assets/HomePic/Footer3.jpeg';
 
 const HEX_SIZE = 40; // radius for black hex
 const GAP = 4; // wire width gap in px
@@ -225,7 +226,7 @@ const HexGrid = () => {
     }
   }
   return (
-    <div style={{ width: '100vw', height: '100vh', overflow: 'hidden' }}>
+    <div className="hero-section">
       <div
         style={{
           height: '100vh',
@@ -239,9 +240,9 @@ const HexGrid = () => {
           ref={gridRef}
           style={{
             width: '100vw',
-            height: '100vh',
-            position: 'relative',
-            top: '0px', // removed negative positioning since navbar is now fixed
+            height: '100%',
+            position: 'absolute',
+            top: '0px',
             left: 0,
             pointerEvents: 'none',
             zIndex: 2,
@@ -315,37 +316,78 @@ const Home = () => {
 
   return (
     <div className="home-root">
-      <HexGrid />
-      <div className="about-myself-section">
-        <div className="about-box">
-          <h2 className="about-title">About Myself</h2>
-          <p className="about-text">
-            I am a passionate developer with a love for futuristic UI and cyberpunk design. 
-            Welcome to my portfolio where creativity meets technology.
-          </p>
-          <div className="about-details">
-            <div className="detail-item">
-              <span className="detail-label">Skills:</span>
-              <span className="detail-value">React, JavaScript, CSS3, HTML5</span>
-            </div>
-            <div className="detail-item">
-              <span className="detail-label">Focus:</span>
-              <span className="detail-value">Modern Web Development</span>
-            </div>
-            <div className="detail-item">
-              <span className="detail-label">Style:</span>
-              <span className="detail-value">Cyberpunk & Futuristic</span>
-            </div>
-          </div>
+      <div className="hex-bg-wrap">
+        <div className="hex-sticky">
+          <HexGrid />
         </div>
-      </div>
-      
-      <div className="tagline-section">
-        <div className="tagline-box">
-          <h1 className="tagline-text">{TAGLINES[currentTagline]}</h1>
-          <div className="author-line">
-            <span className="author-text">— Today's line</span>
+
+        {/* Content below navbar in normal flow */}
+        <div className="hex-content">
+          <div className="hero-stack">
+            <div className="tagline-section">
+              <div className="tagline-box">
+                <h1 className="tagline-text">{TAGLINES[currentTagline]}</h1>
+                <div className="author-line">
+                  <span className="author-text">— Today's line</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="about-myself-section">
+              <div className="about-photo">
+                <img src={HeroPhoto} alt="My portrait" />
+              </div>
+              <div className="about-box with-photo">
+                <h2 className="about-title">About Myself</h2>
+                <p className="about-text">
+                  I am a passionate developer with a love for futuristic UI and cyberpunk design. 
+                  Welcome to my portfolio where creativity meets technology.
+                </p>
+                <div className="about-details">
+                  <div className="detail-item">
+                    <span className="detail-label">Skills:</span>
+                    <span className="detail-value">React, JavaScript, CSS3, HTML5</span>
+                  </div>
+                  <div className="detail-item">
+                    <span className="detail-label">Focus:</span>
+                    <span className="detail-value">Modern Web Development</span>
+                  </div>
+                  <div className="detail-item">
+                    <span className="detail-label">Style:</span>
+                    <span className="detail-value">Cyberpunk & Futuristic</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+
+          {/* Projects Section */}
+          <section className="projects-section">
+            <h1 className="projects-title">Projects</h1>
+            <div className="projects-grid">
+              <a className="project-card" href="#" target="_blank" rel="noreferrer">
+                <div className="project-image" aria-label="Project 1 image"></div>
+                <div className="project-info">
+                  <h3 className="project-name">Project One</h3>
+                  <p className="project-link">View Project</p>
+                </div>
+              </a>
+              <a className="project-card" href="#" target="_blank" rel="noreferrer">
+                <div className="project-image" aria-label="Project 2 image"></div>
+                <div className="project-info">
+                  <h3 className="project-name">Project Two</h3>
+                  <p className="project-link">View Project</p>
+                </div>
+              </a>
+              <a className="project-card" href="#" target="_blank" rel="noreferrer">
+                <div className="project-image" aria-label="Project 3 image"></div>
+                <div className="project-info">
+                  <h3 className="project-name">Project Three</h3>
+                  <p className="project-link">View Project</p>
+                </div>
+              </a>
+            </div>
+          </section>
         </div>
       </div>
     </div>
